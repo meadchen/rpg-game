@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "*** Js Marathon Pro Edition ***",
   "scripts": {
+    "start": "nose scripts/start.js",
     "lint": "npx eslint src/**/*.js",
     "prettier": "npx prettier --write .",
     "dev": "npx webpack server",
     "prepare": "husky install",
     "build:dev": "cross-env NODE_ENV=development webpack",
-    "build": "cross-env NODE_ENV=production webpack",
-    "start": "nose scripts/start.js"
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
