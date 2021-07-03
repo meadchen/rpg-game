@@ -70,7 +70,6 @@ function keyUpHandler(e) {
     default:
       buttonPressed = false;
       break;
-
   }
 }
 
