@@ -1,13 +1,13 @@
 import './index.scss';
-import WalkingImg from './assets/Female-1-Walk.png';
-import terrainAtlas from './assets/terrain.png';
-import worldCfg from './configs/world.json';
-import sprites from "./configs/sprites";
-import ClientGame from "./client/ClientGame";
+//  import WalkingImg from './assets/Female-1-Walk.png';
+//  import terrainAtlas from './assets/terrain.png';
+//  import worldCfg from './configs/world.json';
+//  import sprites from './configs/sprites';
+import ClientGame from './client/ClientGame';
 
-window.addEventListener('load', () =>{
-  ClientGame.init({ tagId: 'game'})
-})
+window.addEventListener('load', () => {
+  ClientGame.init({ tagId: 'game' });
+});
 
 /*
 const canvas = document.getElementById('game');
@@ -99,11 +99,9 @@ function walk(timestamp){
   window.requestAnimationFrame(walk);
 }
 
-
 img.addEventListener('load', () => {
   window.requestAnimationFrame(walk);
 });
-
 
 const terrain = document.createElement('img');
 terrain.src = terrainAtlas;
@@ -116,4 +114,4 @@ terrain.addEventListener('load', () =>{
       ctx.drawImage(terrain, sX, sY, sW, sH, x * spriteW, y * spriteH, spriteW, spriteH)
     })
   })
-})*/
+}) */
