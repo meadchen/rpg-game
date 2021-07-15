@@ -1,6 +1,15 @@
 import './index.scss';
 import WalkingImg from './assets/Female-1-Walk.png';
+import terrainAtlas from './assets/terrain.png';
+import worldCfg from './configs/world.json';
+import sprites from "./configs/sprites";
+import ClientGame from "./client/ClientGame";
 
+window.addEventListener('load', () =>{
+  ClientGame.init({ tagId: 'game'})
+})
+
+/*
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 const spriteW = 48;
@@ -38,19 +47,19 @@ function keyDownHandler(e) {
     case 'ArrowUp':
       buttonPressed = true;
       pY = getActualPos(pY, '-');
-      imgYPos = 144;
+      imgYPos = spriteH * 3;
       break;
     case 'Left':
     case 'ArrowLeft':
       buttonPressed = true;
       pX = getActualPos(pX, '-');
-      imgYPos = 48;
+      imgYPos = spriteH;
       break;
     case 'Right':
     case 'ArrowRight':
       buttonPressed = true;
       pX = getActualPos(pX, '+');
-      imgYPos = 96;
+      imgYPos = spriteH * 2;
       break;
     default:
       buttonPressed = false;
@@ -80,12 +89,31 @@ document.addEventListener('keyup', keyUpHandler);
 const img = document.createElement('img');
 img.src = WalkingImg;
 
+function walk(timestamp){
+  if (buttonPressed) {
+    cycle = (cycle + 1) % shots;
+  }
+  ctx.clearRect(0, 0, 600, 600);
+  ctx.drawImage(img, cycle * spriteW, imgYPos, spriteW, spriteH, pX, pY, 48, 48);
+
+  window.requestAnimationFrame(walk);
+}
+
+
 img.addEventListener('load', () => {
-  setInterval(() => {
-    if (buttonPressed) {
-      cycle = (cycle + 1) % shots;
-    }
-    ctx.clearRect(0, 0, 600, 600);
-    ctx.drawImage(img, cycle * spriteW, imgYPos, spriteW, spriteH, pX, pY, 48, 48);
-  }, 120);
+  window.requestAnimationFrame(walk);
 });
+
+
+const terrain = document.createElement('img');
+terrain.src = terrainAtlas;
+
+terrain.addEventListener('load', () =>{
+  const {map} = worldCfg;
+  map.forEach((cfgRow, y) =>{
+    cfgRow.forEach((cfgCell, x) => {
+      const [sX, sY, sW, sH] = sprites.terrain[cfgCell[0]].frames[0];
+      ctx.drawImage(terrain, sX, sY, sW, sH, x * spriteW, y * spriteH, spriteW, spriteH)
+    })
+  })
+})*/
